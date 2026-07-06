@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>GlobalHire AI - AI国际化职业成长平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/lucide@0.292.0/dist/umd/lucide.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=PingFang+SC:wght@400;600;700&family=SF+Pro+Display:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'PingFang SC', 'SF Pro Display', sans-serif;
+            background-color: #050812;
+            color: #ffffff;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .font-sf {
+            font-family: 'SF Pro Display', sans-serif;
+        }
+        
+        .gradient-brand {
+            background: linear-gradient(135deg, #6E42FF 0%, #FF4DAD 100%);
+        }
+        
+        .gradient-brand-alt {
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #6E42FF 0%, #FF4DAD 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gradient-text-alt {
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-shadow {
+            box-shadow: 0 8px 32px rgba(110, 66, 255, 0.2);
+        }
+        
+        .card-shadow-warm {
+            box-shadow: 0 8px 32px rgba(255, 107, 107, 0.2);
+        }
+        
+        .glass-card {
+            background: rgba(15, 20, 40, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+        }
+        
+        .glass-card-warm {
+            background: rgba(30, 20, 40, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 107, 107, 0.15);
+        }
+        
+        .typing-effect {
+            overflow: hidden;
+            border-right: 2px solid #6E42FF;
+            white-space: nowrap;
+            animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #6E42FF; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .pulse-glow {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(110, 66, 255, 0.4); }
+            50% { box-shadow: 0 0 50px rgba(110, 66, 255, 0.8); }
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #6E42FF 0%, #FF4DAD 100%);
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .mobile-menu-enter {
+            animation: slideIn 0.3s ease-out forwards;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(100%); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .chat-bubble {
+            animation: bubbleIn 0.3s ease-out forwards;
+        }
+        
+        @keyframes bubbleIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .translate-toggle {
+            background: rgba(110, 66, 255, 0.2);
+            border: 1px solid rgba(110, 66, 255, 0.3);
+        }
+        
+        .social-btn-wechat {
+            background: linear-gradient(135deg, #07C160 0%, #10B981 100%);
+        }
+        
+        .social-btn-qq {
+            background: linear-gradient(135deg, #1DA1F2 0%, #3B82F6 100%);
+        }
+        
+        .social-btn-douyin {
+            background: linear-gradient(135deg, #FE2C55 0%, #000000 50%, #FE2C55 100%);
+        }
+        
+        .mountain-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 300px;
+            background: linear-gradient(to top, rgba(110, 66, 255, 0.1) 0%, transparent 100%);
+            clip-path: polygon(0% 100%, 5% 70%, 15% 85%, 25% 60%, 35% 75%, 45% 50%, 55% 65%, 65% 45%, 75% 60%, 85% 40%, 95% 55%, 100% 35%, 100% 100%);
+        }
+        
+        .ocean-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(90deg, transparent 0%, rgba(78, 205, 196, 0.3) 50%, transparent 100%);
+            animation: wave 4s ease-in-out infinite;
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: translateY(0); opacity: 0.5; }
+            50% { transform: translateY(-10px); opacity: 0.8; }
+        }
+        
+        .star-field {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.5), transparent),
+                radial-gradient(1px 1px at 230px 80px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(2px 2px at 300px 150px, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1px 1px at 350px 200px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(2px 2px at 420px 50px, rgba(255,255,255,0.5), transparent),
+                radial-gradient(1px 1px at 500px 180px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(2px 2px at 580px 100px, rgba(255,255,255,0.4), transparent);
+            background-repeat: repeat;
+            background-size: 600px 250px;
+            animation: twinkle 5s ease-in-out infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .glow-border {
+            position: relative;
+        }
+        
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(135deg, #6E42FF, #FF4DAD, #4ECDC4, #6E42FF);
+            background-size: 400% 400%;
+            animation: gradient-rotate 8s linear infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+        
+        @keyframes gradient-rotate {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 400% 50%; }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-[#050812]">
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-card">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 rounded-xl gradient-brand flex items-center justify-center glow-border">
+                        <svg viewBox="0 0 40 40" class="w-7 h-7 text-white">
+                            <defs>
+                                <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#6E42FF"/>
+                                    <stop offset="100%" style="stop-color:#FF4DAD"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M20 2C10.1 2 2 10.1 2 20s8.1 18 18 18 18-8.1 18-18S29.9 2 20 2z" fill="none" stroke="url(#logoGrad)" stroke-width="2.5"/>
+                            <path d="M20 6v18M6 20h18" stroke="#fff" stroke-width="2"/>
+                            <circle cx="20" cy="20" r="4" fill="url(#logoGrad)"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-xl font-bold font-sf tracking-tight">GlobalHire</span>
+                        <span class="text-[10px] text-purple-400 tracking-widest uppercase">AI Platform</span>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-300 hover:text-white transition-colors">首页</a>
+                    <a href="#learn" class="text-gray-300 hover:text-white transition-colors">学习中心</a>
+                    <a href="#interview" class="text-gray-300 hover:text-white transition-colors">AI面试</a>
+                    <a href="#growth" class="text-gray-300 hover:text-white transition-colors">成长地图</a>
+                    <a href="#camp" class="text-gray-300 hover:text-white transition-colors">训练营</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="relative p-2 text-gray-400 hover:text-white transition-colors">
+                        <i data-lucide="bell" class="w-5 h-5"></i>
+                        <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                    </button>
+                    <button class="hidden sm:block px-4 py-2 rounded-12 gradient-brand text-white text-sm font-semibold hover:opacity-90 transition-opacity" onclick="openLoginModal()">
+                        登录/注册
+                    </button>
+                    <button class="md:hidden p-2 text-gray-400 hover:text-white transition-colors" onclick="toggleMobileMenu()">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-64 bg-[#0E1225] z-40 hidden mobile-menu-enter md:hidden">
+        <div class="flex flex-col h-full p-6">
+            <div class="flex items-center justify-between mb-8">
+                <span class="text-lg font-bold">菜单</span>
+                <button onclick="toggleMobileMenu()">
+                    <i data-lucide="x" class="w-6 h-6 text-gray-400"></i>
+                </button>
+            </div>
+            <div class="space-y-4 flex-1">
+                <a href="#home" onclick="toggleMobileMenu()" class="block py-3 px-4 rounded-xl bg-[#151B31] text-white hover:bg-[#222A46] transition-colors">首页</a>
+                <a href="#learn" onclick="toggleMobileMenu()" class="block py-3 px-4 rounded-xl bg-[#151B31] text-white hover:bg-[#222A46] transition-colors">学习中心</a>
+                <a href="#interview" onclick="toggleMobileMenu()" class="block py-3 px-4 rounded-xl bg-[#151B31] text-white hover:bg-[#222A46] transition-colors">AI面试</a>
+                <a href="#growth" onclick="toggleMobileMenu()" class="block py-3 px-4 rounded-xl bg-[#151B31] text-white hover:bg-[#222A46] transition-colors">成长地图</a>
+                <a href="#camp" onclick="toggleMobileMenu()" class="block py-3 px-4 rounded-xl bg-[#151B31] text-white hover:bg-[#222A46] transition-colors">训练营</a>
+            </div>
+            <button class="w-full py-3 rounded-xl gradient-brand text-white font-semibold" onclick="openLoginModal()">
+                登录/注册
+            </button>
+        </div>
+    </div>
+
+    <div id="login-modal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-[#0F1528] rounded-2xl p-8 w-full max-w-md card-shadow glow-border">
+            <div class="flex items-center justify-between mb-6">
+                <button onclick="closeLoginModal()" class="flex items-center space-x-1 text-gray-400 hover:text-white transition-colors">
+                    <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                    <span class="text-sm">返回</span>
+                </button>
+                <h2 class="text-2xl font-bold">登录</h2>
+                <div class="w-16"></div>
+            </div>
+            
+            <div class="space-y-4 mb-6">
+                <div>
+                    <label class="block text-sm text-gray-400 mb-2">手机号</label>
+                    <input type="tel" placeholder="请输入手机号" class="w-full bg-[#1A2240] rounded-xl px-4 py-3 text-white placeholder-gray-500 outline-none focus:border-purple-500 border border-transparent transition-colors">
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-400 mb-2">验证码</label>
+                    <div class="flex space-x-3">
+                        <input type="text" placeholder="请输入验证码" class="flex-1 bg-[#1A2240] rounded-xl px-4 py-3 text-white placeholder-gray-500 outline-none focus:border-purple-500 border border-transparent transition-colors">
+                        <button class="px-4 py-3 rounded-xl bg-[#1A2240] text-gray-300 hover:bg-[#252D4A] transition-colors text-sm">获取验证码</button>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="w-full py-4 rounded-xl gradient-brand text-white font-semibold mb-6 hover:shadow-lg hover:shadow-purple-500/30 transition-all">
+                登录
+            </button>
+            
+            <div class="relative mb-6">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-[#1A2240]"></div>
+                </div>
+                <div class="relative flex justify-center text-sm">
+                    <span class="px-4 bg-[#0F1528] text-gray-500">其他登录方式</span>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-3">
+                <button onclick="socialLogin('wechat')" class="social-btn-wechat flex flex-col items-center justify-center py-4 rounded-xl text-white hover:opacity-90 transition-opacity">
+                    <svg viewBox="0 0 24 24" class="w-8 h-8 mb-2" fill="currentColor">
+                        <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.322-1.223a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.269-.03-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
+                    </svg>
+                    <span class="text-xs">微信登录</span>
+                </button>
+                <button onclick="socialLogin('qq')" class="social-btn-qq flex flex-col items-center justify-center py-4 rounded-xl text-white hover:opacity-90 transition-opacity">
+                    <svg viewBox="0 0 24 24" class="w-8 h-8 mb-2" fill="currentColor">
+                        <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <span class="text-xs">QQ登录</span>
+                </button>
+                <button onclick="socialLogin('douyin')" class="social-btn-douyin flex flex-col items-center justify-center py-4 rounded-xl text-white hover:opacity-90 transition-opacity">
+                    <svg viewBox="0 0 24 24" class="w-8 h-8 mb-2" fill="currentColor">
+                        <path d="M19.588 6.686a4.88 4.88 0 0 1-3.778-4.28v11.4a2.52 2.52 0 0 1-4.386 1.433l-2.747-2.747a2.52 2.52 0 0 1 0-3.564l2.747-2.747a2.52 2.52 0 0 1 2.824-.463v2.793a8.19 8.19 0 0 0 4.777-1.543l1.633-1.633zM9.242 8.588a1.41 1.41 0 0 0-1.994 0l-2.747 2.747a1.41 1.41 0 1 0 1.994 1.994l2.747-2.747a1.41 1.41 0 0 0 0-1.994zM5.5 3.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                    </svg>
+                    <span class="text-xs">抖音登录</span>
+                </button>
+            </div>
+            
+            <div class="mt-6 text-center">
+                <span class="text-gray-400 text-sm">还没有账号？</span>
+                <button class="text-purple-400 text-sm hover:text-purple-300 transition-colors">立即注册</button>
+            </div>
+        </div>
+    </div>
+
+    <main class="pt-16 pb-20">
+        <section id="home" class="relative min-h-screen flex items-center overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#050812] via-[#0A0E20] to-[#0D1325]"></div>
+            <div class="star-field"></div>
+            <div class="absolute top-1/4 right-0 w-[600px] h-[600px] bg-purple-600/15 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 left-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl"></div>
+            <div class="mountain-bg"></div>
+            <div class="ocean-wave"></div>
+            
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in">
+                        <div class="inline-flex items-center px-4 py-2 rounded-full bg-purple-600/20 border border-purple-500/30 mb-6">
+                            <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
+                            <span class="text-sm text-purple-300">AI驱动 · 国际化职业成长</span>
+                        </div>
+                        
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                            让AI帮你<br>
+                            <span class="gradient-text">进入国际化企业</span>
+                        </h1>
+                        
+                        <p class="text-lg text-gray-400 mb-8 max-w-xl">
+                            通过AI模拟真实国际职场环境，帮助你获得英语沟通能力、跨文化协作能力和国际求职能力，最终进入外企、跨境电商和出海企业。
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-4 mb-12">
+                            <button class="px-8 py-4 rounded-xl gradient-brand text-white font-semibold hover:opacity-90 transition-opacity flex items-center space-x-2">
+                                <i data-lucide="play" class="w-5 h-5"></i>
+                                <span>开始AI面试</span>
+                            </button>
+                            <button class="px-8 py-4 rounded-xl border border-gray-600 text-white font-semibold hover:bg-gray-800 transition-colors flex items-center space-x-2">
+                                <i data-lucide="book-open" class="w-5 h-5"></i>
+                                <span>了解更多</span>
+                            </button>
+                        </div>
+                        
+                        <div class="flex items-center space-x-6">
+                            <div class="flex -space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-purple-500 flex items-center justify-center text-xs font-bold border-2 border-[#080B18]">A</div>
+                                <div class="w-10 h-10 rounded-full bg-pink-500 flex items-center justify-center text-xs font-bold border-2 border-[#080B18]">B</div>
+                                <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-xs font-bold border-2 border-[#080B18]">C</div>
+                                <div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-xs font-bold border-2 border-[#080B18]">D</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold font-sf">10,000+</div>
+                                <div class="text-sm text-gray-400">学员已获得国际化Offer</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative fade-in" style="animation-delay: 0.2s;">
+                        <div class="relative w-full max-w-md mx-auto">
+                            <div class="absolute -inset-4 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-3xl blur-xl"></div>
+                            <div class="relative bg-[#151B31] rounded-2xl p-6 card-shadow">
+                                <div class="flex items-center justify-between mb-6">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                                            <i data-lucide="bot" class="w-6 h-6 text-white"></i>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold text-white">AI面试官</div>
+                                            <div class="text-xs text-gray-400">模拟Amazon面试 | Amazon Interview Simulation</div>
+                                        </div>
+                                    </div>
+                                    <div class="px-3 py-1 rounded-full bg-green-500/20 text-green-400 text-xs font-semibold">在线</div>
+                                </div>
+                                
+                                <div class="space-y-4">
+                                    <div class="bg-[#0E1225] rounded-xl p-4">
+                                        <div class="text-sm text-gray-400 mb-2">面试官</div>
+                                        <div class="text-white">Tell me about a time when you faced a challenge in a team project.</div>
+                                        <div class="text-xs text-purple-400 mt-2">（请告诉我你在团队项目中遇到挑战的一次经历。）</div>
+                                    </div>
+                                    
+                                    <div class="bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-xl p-4 ml-8">
+                                        <div class="text-sm text-gray-400 mb-2">你</div>
+                                        <div class="text-white typing-effect">I once led a cross-functional team...</div>
+                                        <div class="text-xs text-pink-400 mt-2">（我曾带领一个跨职能团队...）</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-6 flex items-center space-x-3">
+                                    <div class="flex-1 bg-[#222A46] rounded-xl px-4 py-3">
+                                        <input type="text" placeholder="输入你的回答..." class="w-full bg-transparent text-white placeholder-gray-500 outline-none">
+                                    </div>
+                                    <button class="w-12 h-12 rounded-xl gradient-brand flex items-center justify-center hover:opacity-90 transition-opacity pulse-glow">
+                                        <i data-lucide="mic" class="w-5 h-5 text-white"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-8 bg-[#0A0E20]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-gradient-to-r from-[#6E42FF] via-[#FF4DAD] to-[#4ECDC4] rounded-2xl p-6 md:p-10 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+                    <div class="absolute inset-0 opacity-40">
+                        <img src="https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2" class="w-full h-full object-cover rounded-2xl" alt="Office Background">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div>
+                                <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
+                                    外企Offer案例
+                                </h2>
+                                <p class="text-white/80 mb-6">
+                                    双非本科 → TikTok运营 · 用户成长故事 · 3个月进入跨境电商
+                                </p>
+                                <button class="px-6 py-3 rounded-xl bg-white text-purple-600 font-semibold hover:bg-white/90 transition-colors">
+                                    查看更多案例
+                                </button>
+                            </div>
+                            <div class="flex justify-end">
+                                <div class="flex space-x-4">
+                                    <div class="bg-white/20 backdrop-blur rounded-xl p-4 text-center">
+                                        <div class="text-2xl font-bold text-white">98%</div>
+                                        <div class="text-xs text-white/70">面试通过率</div>
+                                    </div>
+                                    <div class="bg-white/20 backdrop-blur rounded-xl p-4 text-center">
+                                        <div class="text-2xl font-bold text-white">3x</div>
+                                        <div class="text-xs text-white/70">平均薪资增长</div>
+                                    </div>
+                                    <div class="bg-white/20 backdrop-blur rounded-xl p-4 text-center">
+                                        <div class="text-2xl font-bold text-white">150+</div>
+                                        <div class="text-xs text-white/70">合作企业</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-[#050812]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">核心功能</h2>
+                    <p class="text-gray-400 text-lg">AI驱动的国际化职业训练体系 | AI-Powered Global Career Training</p>
+                </div>
+                
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-[#0F1528] rounded-2xl overflow-hidden card-shadow hover:scale-105 transition-all duration-300 cursor-pointer group border border-[#1A2240]">
+                        <div class="h-36 relative overflow-hidden">
+                            <img src="https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="AI Interview">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0F1528] via-[#0F1528]/50 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 w-12 h-12 rounded-xl gradient-brand flex items-center justify-center shadow-lg">
+                                <i data-lucide="mic" class="w-6 h-6 text-white"></i>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-2 flex items-center">
+                                <span>AI面试官</span>
+                                <span class="ml-2 px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-400 text-xs">AI</span>
+                            </h3>
+                            <p class="text-gray-400 text-sm">模拟Amazon、Google、TikTok等国际企业面试</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-[#0F1528] rounded-2xl overflow-hidden card-shadow-warm hover:scale-105 transition-all duration-300 cursor-pointer group border border-[#1A2240]">
+                        <div class="h-36 relative overflow-hidden">
+                            <img src="https://images.pexels.com/photos/264547/pexels-photo-264547.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Business English">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0F1528] via-[#0F1528]/50 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center shadow-lg">
+                                <i data-lucide="globe" class="w-6 h-6 text-white"></i>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-2 flex items-center">
+                                <span>商务英语</span>
+                                <span class="ml-2 px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 text-xs">Business</span>
+                            </h3>
+                            <p class="text-gray-400 text-sm">真实商务场景对话训练，提升职场英语能力</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-[#0F1528] rounded-2xl overflow-hidden card-shadow hover:scale-105 transition-all duration-300 cursor-pointer group border border-[#1A2240]">
+                        <div class="h-36 relative overflow-hidden">
+                            <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Cross-border E-commerce">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0F1528] via-[#0F1528]/50 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-red-400 flex items-center justify-center shadow-lg">
+                                <i data-lucide="shopping-bag" class="w-6 h-6 text-white"></i>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-2 flex items-center">
+                                <span>跨境电商训练</span>
+                                <span class="ml-2 px-2 py-0.5 rounded-full bg-orange-500/20 text-orange-400 text-xs">E-commerce</span>
+                            </h3>
+                            <p class="text-gray-400 text-sm">海外客户沟通、售后回复、商务谈判实战</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-[#0F1528] rounded-2xl overflow-hidden card-shadow-warm hover:scale-105 transition-all duration-300 cursor-pointer group border border-[#1A2240]">
+                        <div class="h-36 relative overflow-hidden">
+                            <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Global Operations">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0F1528] via-[#0F1528]/50 to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-rose-400 flex items-center justify-center shadow-lg">
+                                <i data-lucide="rocket" class="w-6 h-6 text-white"></i>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold mb-2 flex items-center">
+                                <span>出海运营训练</span>
+                                <span class="ml-2 px-2 py-0.5 rounded-full bg-pink-500/20 text-pink-400 text-xs">Global</span>
+                            </h3>
+                            <p class="text-gray-400 text-sm">国际市场分析、内容运营、增长策略培训</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="learn" class="py-16 bg-[#0A0E20]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">学习中心</h2>
+                        <p class="text-gray-400 text-lg">推荐课程与学习进度 | Recommended Courses & Progress</p>
+                    </div>
+                    <button class="mt-4 md:mt-0 px-6 py-2 rounded-xl border border-gray-600 text-white hover:bg-gray-800 transition-colors flex items-center space-x-2">
+                        <span>查看全部课程</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-4 mb-10">
+                    <div class="bg-[#151B31] rounded-2xl p-6 card-shadow">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-semibold">学习进度</h3>
+                            <span class="text-sm text-purple-400">本周完成</span>
+                        </div>
+                        <div class="text-4xl font-bold mb-2">68%</div>
+                        <div class="h-2 bg-[#222A46] rounded-full overflow-hidden mb-4">
+                            <div class="h-full progress-bar w-[68%]"></div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div>
+                                <div class="text-lg font-bold">12</div>
+                                <div class="text-xs text-gray-400">学习天数</div>
+                            </div>
+                            <div>
+                                <div class="text-lg font-bold">48</div>
+                                <div class="text-xs text-gray-400">练习次数</div>
+                            </div>
+                            <div>
+                                <div class="text-lg font-bold">3</div>
+                                <div class="text-xs text-gray-400">证书</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-[#151B31] rounded-2xl p-6 card-shadow">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-semibold">面试评分</h3>
+                            <span class="text-sm text-green-400">优秀</span>
+                        </div>
+                        <div class="text-4xl font-bold mb-2">85</div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span class="text-gray-400">流利度 (Fluency)</span>
+                                    <span>92%</span>
+                                </div>
+                                <div class="h-1.5 bg-[#222A46] rounded-full overflow-hidden">
+                                    <div class="h-full bg-green-500 w-[92%]"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span class="text-gray-400">逻辑表达 (Logic)</span>
+                                    <span>88%</span>
+                                </div>
+                                <div class="h-1.5 bg-[#222A46] rounded-full overflow-hidden">
+                                    <div class="h-full bg-blue-500 w-[88%]"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span class="text-gray-400">词汇丰富度 (Vocabulary)</span>
+                                    <span>78%</span>
+                                </div>
+                                <div class="h-1.5 bg-[#222A46] rounded-full overflow-hidden">
+                                    <div class="h-full bg-orange-500 w-[78%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-[#151B31] rounded-2xl p-6 card-shadow">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-semibold">成长等级</h3>
+                            <div class="flex items-center space-x-1">
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-gray-600"></i>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                                <span class="text-2xl font-bold">L5</span>
+                            </div>
+                            <div>
+                                <div class="font-semibold">中级职场人</div>
+                                <div class="text-sm text-gray-400">距离下一级还需 250 经验</div>
+                            </div>
+                        </div>
+                        <button class="w-full py-3 rounded-xl gradient-brand text-white font-semibold hover:opacity-90 transition-opacity">
+                            查看成长详情
+                        </button>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">推荐课程</h3>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="bg-[#0F1528] rounded-2xl overflow-hidden card-shadow hover:scale-105 transition-all duration-300 cursor-pointer border border-[#1A2240]">
+                            <div class="h-36 relative overflow-hidden">
+                                <img src="https://images.pexels.com/photos/5473863/pexels-photo-5473863.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=2" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" alt="Interview Skills">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0F1528] to-transparent"></div>
+                                <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-purple-500 text-white text-xs font-semibold">面试技巧</div>
+                            </div>
+                            <div class="p-4">
+                                <h4 class="font-semibold mb-2 line-clamp-2">外企面试常见问题解析</h4>
+                                <p class="text-xs text-gray-400 mb-3">FAQ for Foreign Company Interviews</p>
+                                <div class="flex items-center justify-between text-sm text-gray-400">
+                                    <span>2小时课程</span>
+                                    <span>89人正在学习</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-[#0F1528] rounded-2xl overflow-hidden card-shadow-warm hover:scale-105 transition-all duration-300 cursor-pointer border border-[#1A2240]">
+                            <div class="h-36 relative overflow-hidden">
+                                <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=2" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" alt="Business Communication">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0F1528] to-transparent"></div>
+                                <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-cyan-500 text-white text-xs font-semibold">商务英语</div>
+                            </div>
+                            <div class="p-4">
+                                <h4 class="font-semibold mb-2 line-clamp-2">国际会议沟通技巧</h4>
+                                <p class="text-xs text-gray-400 mb-3">International Meeting Communication</p>
+                                <div class="flex items-center justify-between text-sm text-gray-400">
+                                    <span>3小时课程</span>
+                                    <span>156人正在学习</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-[#0F1528] rounded-2xl overflow-hidden card-shadow hover:scale-105 transition-all duration-300 cursor-pointer border border-[#1A2240]">
+                            <div class="h-36 relative overflow-hidden">
+                                <img src="https://images.pexels.com/photos/775095/pexels-photo-775095.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=2" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" alt="Cross-border Email">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0F1528] to-transparent"></div>
+                                <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-orange-500 text-white text-xs font-semibold">跨境电商</div>
+                            </div>
+                            <div class="p-4">
+                                <h4 class="font-semibold mb-2 line-clamp-2">海外客户邮件沟通</h4>
+                                <p class="text-xs text-gray-400 mb-3">Overseas Customer Email Communication</p>
+                                <div class="flex items-center justify-between text-sm text-gray-400">
+                                    <span>2.5小时课程</span>
+                                    <span>234人正在学习</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-[#0F1528] rounded-2xl overflow-hidden card-shadow-warm hover:scale-105 transition-all duration-300 cursor-pointer border border-[#1A2240]">
+                            <div class="h-36 relative overflow-hidden">
+                                <img src="https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&dpr=2" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" alt="Cross-cultural">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0F1528] to-transparent"></div>
+                                <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-pink-500 text-white text-xs font-semibold">跨文化</div>
+                            </div>
+                            <div class="p-4">
+                                <h4 class="font-semibold mb-2 line-clamp-2">欧美商务文化差异</h4>
+                                <p class="text-xs text-gray-400 mb-3">Western Business Culture Differences</p>
+                                <div class="flex items-center justify-between text-sm text-gray-400">
+                                    <span>1.5小时课程</span>
+                                    <span>98人正在学习</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="interview" class="py-20 bg-[#080B18]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4">AI面试</h2>
+                    <p class="text-gray-400">模拟真实国际企业面试场景 | Simulate Real International Company Interviews</p>
+                </div>
+                
+                <div class="grid lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2 bg-[#151B31] rounded-2xl overflow-hidden card-shadow">
+                        <div class="flex items-center justify-between p-6 border-b border-[#222A46]">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                                    <i data-lucide="bot" class="w-7 h-7 text-white"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold">AI面试官</div>
+                                    <div class="text-sm text-gray-400">模拟TikTok产品经理面试 | TikTok PM Interview Simulation</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2 text-sm text-gray-400">
+                                    <i data-lucide="clock" class="w-4 h-4"></i>
+                                    <span>05:32</span>
+                                </div>
+                                <button class="px-4 py-2 rounded-xl bg-red-500/20 text-red-400 text-sm font-semibold hover:bg-red-500/30 transition-colors">
+                                    结束面试
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6 h-80 overflow-y-auto scrollbar-hide space-y-4" id="chat-container">
+                            <div class="flex space-x-3">
+                                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="bot" class="w-5 h-5 text-white"></i>
+                                </div>
+                                <div class="bg-[#0E1225] rounded-xl rounded-tl-none px-4 py-3 max-w-[80%]">
+                                    <p class="text-white">Welcome to the TikTok product manager interview. Let's start with a behavioral question.</p>
+                                    <p class="text-xs text-purple-400 mt-2">（欢迎参加TikTok产品经理面试，我们从行为面试问题开始。）</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex space-x-3 justify-end">
+                                <div class="bg-gradient-to-r from-purple-600/30 to-pink-600/30 rounded-xl rounded-tr-none px-4 py-3 max-w-[80%]">
+                                    <p class="text-white">Thank you. I'm ready.</p>
+                                    <p class="text-xs text-pink-400 mt-2">（谢谢，我准备好了。）</p>
+                                </div>
+                                <div class="w-10 h-10 rounded-xl bg-gray-600 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="user" class="w-5 h-5 text-white"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="flex space-x-3">
+                                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="bot" class="w-5 h-5 text-white"></i>
+                                </div>
+                                <div class="bg-[#0E1225] rounded-xl rounded-tl-none px-4 py-3 max-w-[80%]">
+                                    <p class="text-white">Tell me about a time when you had to make a difficult decision with limited data.</p>
+                                    <p class="text-xs text-purple-400 mt-2">（请告诉我你在数据有限的情况下做出困难决策的经历。）</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6 border-t border-[#222A46]">
+                            <div class="flex items-center space-x-4">
+                                <div class="flex-1 bg-[#222A46] rounded-xl px-4 py-3 flex items-center space-x-3">
+                                    <i data-lucide="mic" class="w-5 h-5 text-gray-400 cursor-pointer hover:text-white transition-colors"></i>
+                                    <input type="text" placeholder="输入你的回答，或点击麦克风语音输入..." class="flex-1 bg-transparent text-white placeholder-gray-500 outline-none">
+                                    <i data-lucide="send" class="w-5 h-5 text-gray-400 cursor-pointer hover:text-white transition-colors"></i>
+                                </div>
+                                <button class="w-14 h-14 rounded-xl gradient-brand flex items-center justify-center hover:opacity-90 transition-opacity pulse-glow">
+                                    <i data-lucide="mic" class="w-6 h-6 text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-[#151B31] rounded-2xl p-6 card-shadow">
+                            <h3 class="font-semibold mb-4">面试进度</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-gray-400">自我介绍 (Self-introduction)</span>
+                                    <span class="text-sm text-green-400">已完成</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-gray-400">行为面试 (Behavioral)</span>
+                                    <span class="text-sm text-blue-400">进行中</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-gray-400">案例分析 (Case Study)</span>
+                                    <span class="text-sm text-gray-500">待完成</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-gray-400">反问环节 (Q&A)</span>
+                                    <span class="text-sm text-gray-500">待完成</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 h-1.5 bg-[#222A46] rounded-full overflow-hidden">
+                                <div class="h-full progress-bar w-[35%]"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-[#151B31] rounded-2xl p-6 card-shadow">
+                            <h3 class="font-semibold mb-4">实时评分</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-[#0E1225] rounded-xl p-4 text-center">
+                                    <div class="text-2xl font-bold text-green-400">92</div>
+                                    <div class="text-xs text-gray-400">流利度 (Fluency)</div>
+                                </div>
+                                <div class="bg-[#0E1225] rounded-xl p-4 text-center">
+                                    <div class="text-2xl font-bold text-blue-400">88</div>
+                                    <div class="text-xs text-gray-400">逻辑表达 (Logic)</div>
+                                </div>
+                                <div class="bg-[#0E1225] rounded-xl p-4 text-center">
+                                    <div class="text-2xl font-bold text-orange-400">85</div>
+                                    <div class="text-xs text-gray-400">词汇丰富度 (Vocabulary)</div>
+                                </div>
+                                <div class="bg-[#0E1225] rounded-xl p-4 text-center">
+                                    <div class="text-2xl font-bold text-purple-400">90</div>
+                                    <div class="text-xs text-gray-400">专业度 (Professionalism)</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-[#151B31] rounded-2xl p-6 card-shadow">
+                            <h3 class="font-semibold mb-4">提示</h3>
+                            <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4">
+                                <div class="flex items-start space-x-3">
+                                    <i data-lucide="lightbulb" class="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <p class="text-sm text-blue-300">建议使用STAR法则回答行为面试问题：</p>
+                                        <p class="text-xs text-gray-400 mt-1">Situation(情境)、Task(任务)、Action(行动)、Result(结果)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="growth" class="py-16 bg-[#0A0E20]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">成长地图</h2>
+                    <p class="text-gray-400 text-lg">从零基础到获得国际化Offer的完整路径 | Complete Path from Zero to Global Offer</p>
+                </div>
+                
+                <div class="relative">
+                    <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-purple-500 via-blue-500 to-pink-500 hidden lg:block"></div>
+                    
+                    <div class="space-y-8 lg:space-y-0">
+                        <div class="grid lg:grid-cols-2 gap-6 lg:gap-10 items-center">
+                        <div class="bg-[#0F1528] rounded-2xl overflow-hidden card-shadow border border-[#1A2240]">
+                            <div class="h-44 relative overflow-hidden">
+                                <img src="https://images.pexels.com/photos/4835415/pexels-photo-4835415.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&dpr=2" class="w-full h-full object-cover" alt="English Foundation">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0F1528] to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 inline-block px-3 py-1 rounded-full bg-purple-500 text-white text-xs font-semibold">阶段一</div>
+                            </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-3">英语能力基础</h3>
+                                    <p class="text-gray-400 mb-4">掌握商务英语核心词汇和基本语法，能够进行简单的日常交流和工作沟通。</p>
+                                    <p class="text-xs text-purple-400 mb-4">Master core business English vocabulary and basic grammar for daily communication.</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-2 py-1 rounded-lg bg-[#222A46] text-xs text-gray-300">词汇积累</span>
+                                        <span class="px-2 py-1 rounded-lg bg-[#222A46] text-xs text-gray-300">语法训练</span>
+                                        <span class="px-2 py-1 rounded-lg bg-[#222A46] text-xs text-gray-300">发音矫正</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden lg:flex justify-center">
+                                <div class="w-16 h-16 rounded-full bg-purple-500 flex items-center justify-center">
+                                    <i data-lucide="book-open" class="w-8 h-8 text-white"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid lg:grid-cols-2 gap-6 lg:gap-10 items-center lg:flex-row-reverse">
+                            <div class="hidden lg:flex justify-center">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center">
+                                    <i data-lucide="message-square" class="w-8 h-8 text-white"></i>
+                                </div>
+                            </div>
+                            <div class="bg-[#0F1528] rounded-2xl overflow-hidden card-shadow-warm border border-[#1A2240]">
+                                <div class="h-44 relative overflow-hidden">
+                                    <img src="https://images.pexels.com/photos/3183158/pexels-photo-3183158.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&dpr=2" class="w-full h-full object-cover" alt="Business Communication">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#0F1528] to-transparent"></div>
+                                    <div class="absolute bottom-4 left-4 inline-block px-3 py-1 rounded-full bg-cyan-500 text-white text-xs font-semibold">阶段二</div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-3">商务表达能力</h3>
+                                    <p class="text-gray-400 mb-4">学习商务邮件写作、会议表达技巧，能够在正式商务场合进行专业沟通。</p>
+                                    <p class="text-xs text-blue-400 mb-4">Learn business email writing and meeting communication skills for professional settings.</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-2 py-1 rounded-lg bg-[#222A46] text-xs text-gray-300">邮件写作</span>
+                                        <span class="px-2 py-1 rounded-lg bg-[#222A46] text-xs text-gray-300">会议表达</span>
+                                        <span class="px-2 py-1 rounded-lg bg-[#222A46] text-xs text-gray-300">商务谈判</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid lg:grid-cols-2 gap-6 lg:gap-10 items-center">
+                            <div class="bg-[#0F1528] rounded-2xl overflow-hidden card-shadow border border-[#1A2240]">
+                                <div class="h-44 relative overflow-hidden">
+                                    <img src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&dpr=2" class="w-full h-full object-cover" alt="Cross-cultural">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#0F1528] to-transparent"></div>
+                                    <div class="absolute bottom-4 left-4 inline-block px-3 py-1 rounded-full bg-green-500 text-white text-xs font-semibold">阶段三</div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-3">跨文化沟通</h3>
+                                    <p class="text-gray-400 mb-4">了解欧美商务文化差异，掌握跨文化沟通技巧，避免文化冲突和误解。</p>
+                                    <p class="text-xs text-green-400 mb-4">Understand Western business culture differences and cross-cultural communication skills.</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-2 py-1 rounded-lg bg-[#222A46] text-xs text-gray-300">美国文化</span>
+                                        <span class="px-2 py-1 rounded-lg bg-[#222A46] text-xs text-gray-300">欧洲商务</span>
+                                        <span class="px-2 py-1 rounded-lg bg-[#222A46] text-xs text-gray-300">远程协作</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden lg:flex justify-center">
+                                <div class="w-16 h-16 rounded-full bg-green-500 flex items-center justify-center">
+                                    <i data-lucide="globe" class="w-8 h-8 text-white"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid lg:grid-cols-2 gap-6 lg:gap-10 items-center lg:flex-row-reverse">
+                            <div class="hidden lg:flex justify-center">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-orange-500 to-red-400 flex items-center justify-center">
+                                    <i data-lucide="briefcase" class="w-8 h-8 text-white"></i>
+                                </div>
+                            </div>
+                            <div class="bg-[#0F1528] rounded-2xl overflow-hidden card-shadow-warm border border-[#1A2240]">
+                                <div class="h-44 relative overflow-hidden">
+                                    <img src="https://images.pexels.com/photos/5473863/pexels-photo-5473863.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&dpr=2" class="w-full h-full object-cover" alt="Interview Skills">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#0F1528] to-transparent"></div>
+                                    <div class="absolute bottom-4 left-4 inline-block px-3 py-1 rounded-full bg-orange-500 text-white text-xs font-semibold">阶段四</div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-3">外企面试技巧</h3>
+                                    <p class="text-gray-400 mb-4">系统学习国际企业面试流程，进行大量模拟面试，积累面试经验。</p>
+                                    <p class="text-xs text-orange-400 mb-4">Systematically learn international company interview processes and gain experience.</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-2 py-1 rounded-lg bg-[#222A46] text-xs text-gray-300">简历优化</span>
+                                        <span class="px-2 py-1 rounded-lg bg-[#222A46] text-xs text-gray-300">行为面试</span>
+                                        <span class="px-2 py-1 rounded-lg bg-[#222A46] text-xs text-gray-300">案例分析</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid lg:grid-cols-2 gap-6 lg:gap-10 items-center">
+                        <div class="bg-gradient-to-br from-purple-600/20 via-pink-600/20 to-cyan-600/20 rounded-2xl overflow-hidden card-shadow border border-purple-500/30">
+                            <div class="h-44 relative overflow-hidden">
+                                <img src="https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600&dpr=2" class="w-full h-full object-cover" alt="Get Offer">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0F1528] to-transparent opacity-90"></div>
+                                <div class="absolute bottom-4 left-4 inline-block px-3 py-1 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 text-white text-xs font-semibold">最终目标</div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-3">获得国际化Offer</h3>
+                                <p class="text-gray-300 mb-4">成功通过面试，获得外企、跨境电商或出海公司的录用通知，实现职业跃迁。</p>
+                                <p class="text-xs text-pink-400 mb-4">Successfully pass interviews and receive offers from international companies.</p>
+                                <button class="px-6 py-3 rounded-xl gradient-brand text-white font-semibold hover:opacity-90 transition-opacity hover:shadow-lg hover:shadow-purple-500/30">
+                                    开始你的职业之旅
+                                </button>
+                            </div>
+                        </div>
+                        <div class="hidden lg:flex justify-center">
+                            <div class="w-20 h-20 rounded-full gradient-brand flex items-center justify-center pulse-glow">
+                                <i data-lucide="trophy" class="w-10 h-10 text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="camp" class="py-16 bg-[#050812]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">训练营</h2>
+                        <p class="text-gray-400 text-lg">系统化的求职训练课程 | Systematic Job Training Courses</p>
+                    </div>
+                    <button class="mt-4 md:mt-0 px-6 py-2 rounded-xl border border-gray-600 text-white hover:bg-gray-800 transition-colors flex items-center space-x-2">
+                        <span>查看全部训练营</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="bg-[#0F1528] rounded-2xl overflow-hidden card-shadow hover:scale-105 transition-all duration-300 cursor-pointer border border-[#1A2240]">
+                        <div class="h-48 relative overflow-hidden">
+                            <img src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&dpr=2" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" alt="Foreign Company Camp">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0F1528] to-transparent"></div>
+                            <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-semibold">热门</div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold mb-2">外企求职冲刺营</h3>
+                            <p class="text-gray-400 text-sm mb-3">3个月系统训练，从简历优化到最终面试，全程AI陪练，助你拿到心仪Offer。</p>
+                            <p class="text-xs text-purple-400 mb-4">3-month intensive training with AI coaching from resume to final interview.</p>
+                            
+                            <div class="flex items-center space-x-4 mb-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-8 h-8 rounded-full gradient-brand flex items-center justify-center text-xs font-bold text-white">J</div>
+                                    <span class="text-sm">James导师</span>
+                                </div>
+                                <div class="flex items-center space-x-1 text-sm text-gray-400">
+                                    <i data-lucide="users" class="w-4 h-4"></i>
+                                    <span>234人学习</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-2xl font-bold text-white">¥2,999</span>
+                                    <span class="text-sm text-gray-400 line-through">¥3,999</span>
+                                </div>
+                                <button class="px-4 py-2 rounded-xl gradient-brand text-white text-sm font-semibold hover:opacity-90 transition-opacity hover:shadow-lg hover:shadow-purple-500/30">
+                                    立即报名
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-[#0F1528] rounded-2xl overflow-hidden card-shadow-warm hover:scale-105 transition-all duration-300 cursor-pointer border border-[#1A2240]">
+                        <div class="h-48 relative overflow-hidden">
+                            <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&dpr=2" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" alt="Cross-border Camp">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0F1528] to-transparent"></div>
+                            <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-gradient-to-r from-orange-500 to-red-400 text-white text-xs font-semibold">推荐</div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold mb-2">跨境电商求职营</h3>
+                            <p class="text-gray-400 text-sm mb-3">专注跨境电商行业，学习SHEIN、Temu等公司的运营方法论和面试技巧。</p>
+                            <p class="text-xs text-orange-400 mb-4">Focus on cross-border e-commerce industry with SHEIN, Temu methodologies.</p>
+                            
+                            <div class="flex items-center space-x-4 mb-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-red-400 flex items-center justify-center text-xs font-bold text-white">S</div>
+                                    <span class="text-sm">Sarah导师</span>
+                                </div>
+                                <div class="flex items-center space-x-1 text-sm text-gray-400">
+                                    <i data-lucide="users" class="w-4 h-4"></i>
+                                    <span>189人学习</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-2xl font-bold text-white">¥1,999</span>
+                                    <span class="text-sm text-gray-400 line-through">¥2,999</span>
+                                </div>
+                                <button class="px-4 py-2 rounded-xl gradient-brand text-white text-sm font-semibold hover:opacity-90 transition-opacity hover:shadow-lg hover:shadow-purple-500/30">
+                                    立即报名
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-[#0F1528] rounded-2xl overflow-hidden card-shadow hover:scale-105 transition-all duration-300 cursor-pointer border border-[#1A2240]">
+                        <div class="h-48 relative overflow-hidden">
+                            <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&dpr=2" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" alt="Global Operations Camp">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0F1528] to-transparent"></div>
+                            <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-gradient-to-r from-pink-500 to-rose-400 text-white text-xs font-semibold">新课</div>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold mb-2">出海运营精英营</h3>
+                            <p class="text-gray-400 text-sm mb-3">深入学习TikTok、Instagram等海外平台运营策略，成为出海业务核心人才。</p>
+                            <p class="text-xs text-pink-400 mb-4">Deep dive into TikTok, Instagram overseas platform operations.</p>
+                            
+                            <div class="flex items-center space-x-4 mb-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-500 to-rose-400 flex items-center justify-center text-xs font-bold text-white">M</div>
+                                    <span class="text-sm">Mike导师</span>
+                                </div>
+                                <div class="flex items-center space-x-1 text-sm text-gray-400">
+                                    <i data-lucide="users" class="w-4 h-4"></i>
+                                    <span>156人学习</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-2xl font-bold text-white">¥2,499</span>
+                                    <span class="text-sm text-gray-400 line-through">¥3,499</span>
+                                </div>
+                                <button class="px-4 py-2 rounded-xl gradient-brand text-white text-sm font-semibold hover:opacity-90 transition-opacity hover:shadow-lg hover:shadow-purple-500/30">
+                                    立即报名
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-[#0E1225]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-gradient-to-r from-[#6E42FF] to-[#FF4DAD] rounded-2xl p-8 md:p-12 text-center relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+                    <div class="relative z-10">
+                        <h2 class="text-3xl font-bold text-white mb-4">准备好开始你的国际化职业之旅了吗？</h2>
+                        <p class="text-white/80 mb-8 max-w-2xl mx-auto">
+                            加入10,000+学员的行列，让AI帮你获得进入国际化企业的能力和机会。
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center gap-4">
+                            <button class="px-8 py-4 rounded-xl bg-white text-purple-600 font-semibold hover:bg-white/90 transition-colors">
+                                免费体验AI面试
+                            </button>
+                            <button class="px-8 py-4 rounded-xl border-2 border-white text-white font-semibold hover:bg-white/10 transition-colors">
+                                了解会员套餐
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#080B18] border-t border-[#222A46] py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-2 md:col-span-1">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 rounded-xl gradient-brand flex items-center justify-center">
+                            <svg viewBox="0 0 40 40" class="w-7 h-7 text-white">
+                                <defs>
+                                    <linearGradient id="logoGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#6E42FF"/>
+                                        <stop offset="100%" style="stop-color:#FF4DAD"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M20 2C10.1 2 2 10.1 2 20s8.1 18 18 18 18-8.1 18-18S29.9 2 20 2z" fill="none" stroke="url(#logoGrad2)" stroke-width="2.5"/>
+                                <path d="M20 6v18M6 20h18" stroke="#fff" stroke-width="2"/>
+                                <circle cx="20" cy="20" r="4" fill="url(#logoGrad2)"/>
+                            </svg>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-xl font-bold font-sf tracking-tight">GlobalHire</span>
+                            <span class="text-[10px] text-purple-400 tracking-widest uppercase">AI Platform</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm">AI驱动的国际化职业成长平台</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">产品</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">AI面试官</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">商务英语</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">跨境电商训练</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">成长地图</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">企业服务</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">AI面试平台</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">员工培训</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">校企合作</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">关于</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">关于我们</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">用户案例</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">联系我们</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-[#222A46] pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm">© 2024 GlobalHire AI. All rights reserved.</p>
+                <div class="flex items-center space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i data-lucide="github" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i data-lucide="twitter" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="chat-toggle" class="fixed bottom-6 right-6 w-14 h-14 rounded-full gradient-brand flex items-center justify-center shadow-lg hover:scale-110 transition-transform z-50 pulse-glow" onclick="toggleChat()">
+        <i data-lucide="message-circle" class="w-6 h-6 text-white"></i>
+    </button>
+
+    <div id="chat-container-full" class="fixed bottom-24 right-6 w-80 bg-[#0F1528] rounded-2xl overflow-hidden card-shadow z-50 hidden border border-[#1A2240]">
+        <div class="p-4 border-b border-[#1A2240] flex items-center justify-between bg-gradient-to-r from-purple-600/20 via-pink-600/20 to-cyan-600/20">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center pulse-glow">
+                    <svg viewBox="0 0 24 24" class="w-5 h-5 text-white">
+                        <circle cx="12" cy="8" r="4"/>
+                        <path d="M12 14c-4 0-8 2-8 4v2h16v-2c0-2-4-4-8-4z"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="font-semibold text-white">在线客服</div>
+                    <div class="text-xs text-green-400 flex items-center">
+                        <span class="w-1.5 h-1.5 bg-green-400 rounded-full mr-1 animate-pulse"></span>
+                        24小时在线
+                    </div>
+                </div>
+            </div>
+            <button onclick="toggleChat()" class="p-1 rounded-lg hover:bg-white/10 transition-colors">
+                <i data-lucide="x" class="w-5 h-5 text-gray-400"></i>
+            </button>
+        </div>
+        
+        <div class="h-64 overflow-y-auto p-4 space-y-4 scrollbar-hide" id="chat-messages">
+            <div class="flex space-x-3">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                    <svg viewBox="0 0 24 24" class="w-4 h-4 text-white">
+                        <circle cx="12" cy="8" r="3"/>
+                        <path d="M12 12c-3 0-6 1.5-6 3v1h12v-1c0-1.5-3-3-6-3z"/>
+                    </svg>
+                </div>
+                <div class="bg-[#1A2240] rounded-xl rounded-tl-none px-4 py-3 max-w-[85%]">
+                    <p class="text-sm text-white">您好！我是GlobalHire AI的在线客服，请问有什么可以帮助您的？</p>
+                </div>
+            </div>
+            <div class="flex space-x-3">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                    <svg viewBox="0 0 24 24" class="w-4 h-4 text-white">
+                        <circle cx="12" cy="8" r="3"/>
+                        <path d="M12 12c-3 0-6 1.5-6 3v1h12v-1c0-1.5-3-3-6-3z"/>
+                    </svg>
+                </div>
+                <div class="bg-[#1A2240] rounded-xl rounded-tl-none px-4 py-3 max-w-[85%]">
+                    <p class="text-sm text-white">您可以咨询：课程问题、面试技巧、会员服务等</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="p-4 border-t border-[#1A2240]">
+            <div class="flex items-center space-x-3">
+                <input type="text" id="chat-input" placeholder="输入您的问题..." class="flex-1 bg-[#1A2240] rounded-xl px-4 py-3 text-white text-sm placeholder-gray-500 outline-none focus:border-purple-500 border border-transparent transition-colors">
+                <button onclick="sendMessage()" class="w-10 h-10 rounded-xl gradient-brand flex items-center justify-center hover:opacity-90 transition-opacity hover:shadow-lg hover:shadow-purple-500/30">
+                    <i data-lucide="send" class="w-4 h-4 text-white"></i>
+                </button>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-3">
+                <button onclick="quickQuestion('如何开始AI面试？')" class="px-3 py-1.5 rounded-lg bg-[#1A2240] text-xs text-gray-400 hover:bg-[#252D4A] hover:text-white transition-colors">如何开始AI面试？</button>
+                <button onclick="quickQuestion('会员套餐有哪些？')" class="px-3 py-1.5 rounded-lg bg-[#1A2240] text-xs text-gray-400 hover:bg-[#252D4A] hover:text-white transition-colors">会员套餐有哪些？</button>
+                <button onclick="quickQuestion('课程有效期多久？')" class="px-3 py-1.5 rounded-lg bg-[#1A2240] text-xs text-gray-400 hover:bg-[#252D4A] hover:text-white transition-colors">课程有效期多久？</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        
+        const mockApi = {
+            login: async (type, data) => {
+                console.log(`[模拟API请求] POST /api/auth/${type}/login`, data);
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        const mockUsers = {
+                            wechat: {
+                                userId: 'wx_' + Math.random().toString(36).substr(2, 9),
+                                nickname: '微信用户_' + Math.floor(Math.random() * 1000),
+                                avatar: '',
+                                platform: 'wechat',
+                                token: 'mock_token_wechat_' + Date.now()
+                            },
+                            qq: {
+                                userId: 'qq_' + Math.random().toString(36).substr(2, 9),
+                                nickname: 'QQ用户_' + Math.floor(Math.random() * 1000),
+                                avatar: '',
+                                platform: 'qq',
+                                token: 'mock_token_qq_' + Date.now()
+                            },
+                            douyin: {
+                                userId: 'dy_' + Math.random().toString(36).substr(2, 9),
+                                nickname: '抖音用户_' + Math.floor(Math.random() * 1000),
+                                avatar: '',
+                                platform: 'douyin',
+                                token: 'mock_token_douyin_' + Date.now()
+                            },
+                            phone: {
+                                userId: 'phone_' + Math.random().toString(36).substr(2, 9),
+                                nickname: '用户' + data.phone.substr(-4),
+                                phone: data.phone,
+                                avatar: '',
+                                platform: 'phone',
+                                token: 'mock_token_phone_' + Date.now()
+                            }
+                        };
+                        
+                        const user = mockUsers[type];
+                        if (user) {
+                            console.log(`[模拟API响应] 200 OK`, user);
+                            resolve({ code: 200, data: user, message: '登录成功' });
+                        } else {
+                            reject({ code: 400, message: '登录失败' });
+                        }
+                    }, 1500);
+                });
+            },
+            
+            getUserInfo: async (token) => {
+                console.log(`[模拟API请求] GET /api/user/info`, { token });
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        const user = JSON.parse(localStorage.getItem('globalhire_user'));
+                        resolve({ code: 200, data: user, message: 'success' });
+                    }, 300);
+                });
+            },
+            
+            logout: async (token) => {
+                console.log(`[模拟API请求] POST /api/auth/logout`, { token });
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        resolve({ code: 200, message: '退出成功' });
+                    }, 500);
+                });
+            }
+        };
+        
+        const auth = {
+            getCurrentUser: () => {
+                const userStr = localStorage.getItem('globalhire_user');
+                return userStr ? JSON.parse(userStr) : null;
+            },
+            
+            setUser: (user) => {
+                localStorage.setItem('globalhire_user', JSON.stringify(user));
+                localStorage.setItem('globalhire_token', user.token);
+            },
+            
+            clearUser: () => {
+                localStorage.removeItem('globalhire_user');
+                localStorage.removeItem('globalhire_token');
+            },
+            
+            isLoggedIn: () => {
+                return !!localStorage.getItem('globalhire_token');
+            }
+        };
+        
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            const bgColor = type === 'success' ? 'bg-green-500' : type === 'error' ? 'bg-red-500' : 'bg-blue-500';
+            toast.className = `fixed top-20 left-1/2 transform -translate-x-1/2 ${bgColor} text-white px-6 py-3 rounded-xl shadow-lg z-50 fade-in`;
+            toast.innerHTML = `
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="${type === 'success' ? 'check-circle' : type === 'error' ? 'x-circle' : 'info'}" class="w-5 h-5"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            document.body.appendChild(toast);
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translate(-50%, -10px)';
+                toast.style.transition = 'all 0.3s ease';
+                setTimeout(() => toast.remove(), 300);
+            }, 2000);
+        }
+        
+        function showLoading(button, originalText) {
+            button.disabled = true;
+            button.innerHTML = `
+                <div class="flex items-center justify-center space-x-2">
+                    <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>登录中...</span>
+                </div>
+            `;
+        }
+        
+        function hideLoading(button, originalText) {
+            button.disabled = false;
+            button.innerHTML = originalText;
+        }
+        
+        async function socialLogin(type) {
+            const typeNames = {
+                wechat: '微信',
+                qq: 'QQ',
+                douyin: '抖音'
+            };
+            
+            console.log(`开始${typeNames[type]}登录流程...`);
+            
+            const modal = document.getElementById('login-modal');
+            const loadingOverlay = document.createElement('div');
+            loadingOverlay.id = 'login-loading';
+            loadingOverlay.className = 'absolute inset-0 bg-[#0F1528]/90 rounded-2xl flex flex-col items-center justify-center z-10';
+            loadingOverlay.innerHTML = `
+                <div class="w-16 h-16 rounded-full gradient-brand flex items-center justify-center mb-4 pulse-glow">
+                    <svg class="animate-spin h-8 w-8 text-white" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </div>
+                <p class="text-white font-semibold mb-2">正在使用${typeNames[type]}登录</p>
+                <p class="text-gray-400 text-sm">请稍候...</p>
+            `;
+            
+            const modalContent = modal.querySelector('.bg-\\[\\#0F1528\\]');
+            modalContent.style.position = 'relative';
+            modalContent.appendChild(loadingOverlay);
+            
+            try {
+                console.log(`[步骤1] 模拟跳转到${typeNames[type]}授权页面...`);
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                console.log(`[步骤2] 模拟用户授权...`);
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                console.log(`[步骤3] 获取授权码，请求服务器登录...`);
+                const response = await mockApi.login(type, { code: 'mock_auth_code_' + Date.now() });
+                
+                if (response.code === 200) {
+                    auth.setUser(response.data);
+                    console.log('登录成功，用户信息:', response.data);
+                    
+                    showToast(`${typeNames[type]}登录成功！`, 'success');
+                    
+                    setTimeout(() => {
+                        closeLoginModal();
+                        updateLoginUI();
+                        removeLoading();
+                    }, 500);
+                }
+            } catch (error) {
+                console.error('登录失败:', error);
+                showToast(`${typeNames[type]}登录失败，请重试`, 'error');
+                removeLoading();
+            }
+            
+            function removeLoading() {
+                const loading = document.getElementById('login-loading');
+                if (loading) loading.remove();
+            }
+        }
+        
+        function updateLoginUI() {
+            const user = auth.getCurrentUser();
+            const loginBtn = document.querySelector('button[onclick="openLoginModal()"]');
+            
+            if (user && loginBtn) {
+                const platformColors = {
+                    wechat: 'bg-green-500',
+                    qq: 'bg-blue-500',
+                    douyin: 'bg-pink-500',
+                    phone: 'bg-purple-500'
+                };
+                const platformNames = {
+                    wechat: '微信',
+                    qq: 'QQ',
+                    douyin: '抖音',
+                    phone: '手机'
+                };
+                
+                loginBtn.outerHTML = `
+                    <div class="hidden sm:flex items-center space-x-3">
+                        <div class="flex items-center space-x-2 px-3 py-2 rounded-xl bg-[#151B31]">
+                            <div class="w-8 h-8 rounded-full ${platformColors[user.platform] || 'bg-purple-500'} flex items-center justify-center text-white text-sm font-bold">
+                                ${user.nickname.charAt(0)}
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-sm font-semibold text-white">${user.nickname}</span>
+                                <span class="text-xs text-gray-400">${platformNames[user.platform]}登录</span>
+                            </div>
+                        </div>
+                        <button onclick="logout()" class="px-4 py-2 rounded-xl border border-gray-600 text-white hover:bg-gray-800 transition-colors text-sm">
+                            退出登录
+                        </button>
+                    </div>
+                `;
+            }
+        }
+        
+        async function logout() {
+            console.log('开始退出登录...');
+            
+            try {
+                const token = localStorage.getItem('globalhire_token');
+                await mockApi.logout(token);
+                
+                auth.clearUser();
+                console.log('退出成功');
+                showToast('已退出登录', 'info');
+                
+                setTimeout(() => {
+                    location.reload();
+                }, 500);
+            } catch (error) {
+                console.error('退出失败:', error);
+                showToast('退出失败，请重试', 'error');
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            if (auth.isLoggedIn()) {
+                updateLoginUI();
+                console.log('当前登录状态: 已登录', auth.getCurrentUser());
+            } else {
+                console.log('当前登录状态: 未登录');
+            }
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        const chatContainer = document.getElementById('chat-container');
+        if (chatContainer) {
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+        
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        
+        function openLoginModal() {
+            const modal = document.getElementById('login-modal');
+            modal.classList.remove('hidden');
+        }
+        
+        function closeLoginModal() {
+            const modal = document.getElementById('login-modal');
+            modal.classList.add('hidden');
+        }
+        
+        function toggleChat() {
+            const chat = document.getElementById('chat-container-full');
+            const toggle = document.getElementById('chat-toggle');
+            chat.classList.toggle('hidden');
+            if (!chat.classList.contains('hidden')) {
+                toggle.innerHTML = '<i data-lucide="x" class="w-6 h-6 text-white"></i>';
+                lucide.createIcons();
+            } else {
+                toggle.innerHTML = '<i data-lucide="message-circle" class="w-6 h-6 text-white"></i>';
+                lucide.createIcons();
+            }
+        }
+        
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const messages = document.getElementById('chat-messages');
+            const text = input.value.trim();
+            
+            if (!text) return;
+            
+            const userMessage = document.createElement('div');
+            userMessage.className = 'flex space-x-3 justify-end chat-bubble';
+            userMessage.innerHTML = `
+                <div class="bg-gradient-to-r from-purple-600/30 to-pink-600/30 rounded-xl rounded-tr-none px-4 py-3 max-w-[85%]">
+                    <p class="text-sm text-white">${text}</p>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="user" class="w-4 h-4 text-white"></i>
+                </div>
+            `;
+            messages.appendChild(userMessage);
+            input.value = '';
+            messages.scrollTop = messages.scrollHeight;
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                const botMessage = document.createElement('div');
+                botMessage.className = 'flex space-x-3 chat-bubble';
+                botMessage.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                        <svg viewBox="0 0 24 24" class="w-4 h-4 text-white">
+                            <circle cx="12" cy="8" r="3"/>
+                            <path d="M12 12c-3 0-6 1.5-6 3v1h12v-1c0-1.5-3-3-6-3z"/>
+                        </svg>
+                    </div>
+                    <div class="bg-[#1A2240] rounded-xl rounded-tl-none px-4 py-3 max-w-[85%]">
+                        <p class="text-sm text-white">感谢您的咨询！我们已收到您的问题，专业顾问将在24小时内与您联系。</p>
+                    </div>
+                `;
+                messages.appendChild(botMessage);
+                messages.scrollTop = messages.scrollHeight;
+                lucide.createIcons();
+            }, 1000);
+        }
+        
+        function quickQuestion(text) {
+            const input = document.getElementById('chat-input');
+            input.value = text;
+            sendMessage();
+        }
+        
+        document.getElementById('chat-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
